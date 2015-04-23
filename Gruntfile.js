@@ -200,16 +200,17 @@ module.exports = function (grunt) {
 
     slim: {
       chrome: {
+        options: {
+          pretty: true
+        },
         files: [{
           expand: true,
           cwd: '<%= config.app %>/',
           src: '*.slim',
           dest: '<%= config.app %>/',
           ext: '.html'
-
         }]
-      },
-
+      }
     },
 
     // Automatically inject Bower components into the HTML file
@@ -274,17 +275,17 @@ module.exports = function (grunt) {
       dist: {
         options: {
           // removeCommentsFromCDATA: true,
-          // collapseWhitespace: true,
-          // collapseBooleanAttributes: true,
-          // removeAttributeQuotes: true,
-          // removeRedundantAttributes: true,
-          // useShortDoctype: true,
-          // removeEmptyAttributes: true,
-          // removeOptionalTags: true
+          collapseWhitespace: true,
+          collapseBooleanAttributes: true,
+          removeAttributeQuotes: true,
+          removeRedundantAttributes: true,
+          useShortDoctype: true,
+          removeEmptyAttributes: true,
+          removeOptionalTags: true
         },
         files: [{
           expand: true,
-          cwd: '<%= config.app %>',
+          cwd: '<%= config.dist %>',
           src: '*.html',
           dest: '<%= config.dist %>'
         }]
@@ -422,6 +423,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'chromeManifest:dist',
+    'slim',
     'useminPrepare',
     'concurrent:dist',
     // No UI feature selected, cssmin task will be commented
@@ -430,6 +432,7 @@ module.exports = function (grunt) {
     'uglify',
     'copy',
     'usemin',
+    'htmlmin',
     'compress'
   ]);
 

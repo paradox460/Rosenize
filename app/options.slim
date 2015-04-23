@@ -2,9 +2,13 @@ doctype html
 html
   head
     title Options for Rosenize
-    script(src="bower_components/jquery/dist/jquery.min.js" type="text/javascript")
-    script(src="bower_components/underscore/underscore-min.js" type="text/javascript")
-    script(src="scripts/options.js" type="text/javascript")
+    <!-- build:js scripts/vendor.js -->
+      <!-- bower:js -->
+        script(src="bower_components/jquery/dist/jquery.min.js" type="text/javascript")
+        script(src="bower_components/underscore/underscore-min.js" type="text/javascript")
+        script(src="scripts/options.js" type="text/javascript")
+      <!-- endbower -->
+    <!-- endbuild -->
   body
     p Specify how many images to rosenate
     input#rosenry(type='range' min=0 max=100 list='rosenlevels' style="width:400px" value=100)
