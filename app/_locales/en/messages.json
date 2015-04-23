@@ -1,0 +1,14 @@
+{
+  "appName": {
+    "message": "Rosenize",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Change images into Michael Rosen",
+    "description": "The description of the application"
+  },
+  "appShortName": {
+    "message": "Rosenize",
+    "description": "The shortname"
+  }
+}
