@@ -1,7 +1,7 @@
 {
   "name": "__MSG_appName__",
   "short_name": "__MSG_appShortName__",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "manifest_version": 2,
   "description": "__MSG_appDescription__",
   "author": "Jeff Sandberg",
@@ -18,12 +18,25 @@
   "default_locale": "en",
   "background": {
     "scripts": [
+      "bower_components/underscore/underscore.js",
       "scripts/chromereload.js",
       "scripts/background.js"
     ]
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "scripts/mmm.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
   "web_accessible_resources": [
-    "images/rosens/*"
+    "images/rosens/*",
+    "audio/*"
   ],
   "options_ui": {
     "page": "options.html",
