@@ -10,12 +10,26 @@ html
       <!-- endbower -->
     <!-- endbuild -->
   body
-    p Specify how many images to rosenate
-    input#rosenry(type='range' min=0 max=100 list='rosenlevels' style="width:400px" value=100)
-    
+    p Chance an image is rosenized
+    input#rosenry(type='range' min=0 max=100 list='levels' style="width:400px" value=100)
     .rosen-amount
       span.num 100
       span.percent % rosen
-    datalist#rosenlevels
-      - 10.times do |i|
+    hr
+    p Chance Michael says "Mmmm" on page load
+    input#mmm_rate(type='range' min=0 max=100 list='levels' style="width:400px" value=100)
+    .mmm-amount
+      span.num 100
+      span.percent % rosen
+    p Volume of "Mmmmm"
+    input#mmm_volume(type='range' min=0 max=100 list='levels' style="width:400px" value=100)
+    .mmm-volume
+      span.num 100
+      span.percent % rosen
+    
+
+    
+    
+    datalist#levels
+      - 11.times do |i|
         option=i*10
