@@ -34,9 +34,7 @@ chrome.storage.onChanged.addListener( (i) ->
 )
 
 chrome.webRequest.onBeforeRequest.addListener( (info) ->
-  if Math.round(Math.random() * 100) > rosenry
-    return
-
+  return if Math.round(Math.random() * 100) > rosenry
   i = Math.round(Math.random() * rosens.length)
   newURL = chrome.extension.getURL("images/rosens/#{rosens[i].filename}")
   {redirectUrl: newURL}
