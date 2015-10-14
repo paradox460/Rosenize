@@ -17,9 +17,20 @@ chrome.storage.sync.get({'rosenry': 100}, (i) ->
   return
 )
 
+audio = new Audio('/audio/mmm.opus')
+
 rosenry = 100
 chrome.storage.onChanged.addListener( (i) ->
   rosenry = i.rosenry.newValue
+)
+
+mmm_rate = 100
+chrome.storage.onChanged.addListener( (i) ->
+  mmm_rate = i.mmm_rate.newValue
+)
+audio.volume = 1.0
+chrome.storage.onChanged.addListener( (i) ->
+  audio.volume = i.mmm_volume.newValue / 100
 )
 
 chrome.webRequest.onBeforeRequest.addListener( (info) ->
@@ -30,3 +41,14 @@ chrome.webRequest.onBeforeRequest.addListener( (info) ->
   newURL = chrome.extension.getURL("images/rosens/#{rosens[i].filename}")
   {redirectUrl: newURL}
 , {'urls': ['<all_urls>'], 'types': ['image'] }, ['blocking'] )
+
+playMmm = ->
+  return if Math.round(Math.random() * 100) > mmm_rate
+  _.debounce( ->
+    audio.play()
+  , 5000, true )()
+
+chrome.runtime.onMessage.addListener( (request, sender, sendResponse) ->
+  if request.event == 'mmm'
+    playMmm()
+)
