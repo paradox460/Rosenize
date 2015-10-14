@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 xhr = new XMLHttpRequest()
 
